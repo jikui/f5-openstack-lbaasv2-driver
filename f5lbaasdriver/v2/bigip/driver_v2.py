@@ -1,6 +1,6 @@
 # coding=utf-8
 u"""F5 Networks® LBaaSv2 Driver Implementation."""
-# Copyright 2016 F5 Networks Inc.
+# Copyright (c) 2016-2018, F5 Networks, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,8 +25,8 @@ from oslo_utils import importutils
 from neutron.callbacks import events
 from neutron.callbacks import registry
 from neutron.callbacks import resources
-from neutron.extensions import portbindings
 from neutron.plugins.common import constants as plugin_constants
+from neutron_lib.api.definitions import portbindings
 from neutron_lib import constants as q_const
 
 from neutron_lbaas.db.loadbalancer import models
@@ -109,7 +109,7 @@ class F5DriverV2(object):
 
         registry.subscribe(self._bindRegistryCallback(),
                            resources.PROCESS,
-                           events.AFTER_CREATE)
+                           events.AFTER_INIT)
 
     def _bindRegistryCallback(self):
         # Defines a callback function with name tied to driver env. Need to

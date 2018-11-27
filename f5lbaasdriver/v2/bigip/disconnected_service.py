@@ -1,4 +1,4 @@
-# Copyright 2016 F5 Networks Inc.
+# Copyright (c) 2016-2018, F5 Networks, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
 # limitations under the License.
 #
 
+from neutron.db import segments_db
 from neutron.plugins.ml2 import db
 from neutron.plugins.ml2 import models
+
 from oslo_log import log as logging
 
 LOG = logging.getLogger(__name__)
@@ -50,8 +52,8 @@ class DisconnectedService(object):
             agent_configuration.get('tunnel_types', [])
         ]
         # look up segment details in the ml2_network_segments table
-        segments = db.get_network_segments(context.session, network['id'],
-                                           filter_dynamic=None)
+        segments = segments_db.get_network_segments(context, network['id'],
+                                                    filter_dynamic=None)
 
         for segment in segments:
             LOG.debug("F5 disconnected service check segment: %s" % segment)
