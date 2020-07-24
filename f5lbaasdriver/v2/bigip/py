@@ -1,0 +1,2 @@
+service_builder.py:            LOG.warning('Exception: Get keystone project: %s', e.message)
+Binary file service_builder.pyc matches

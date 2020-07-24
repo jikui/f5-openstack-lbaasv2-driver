@@ -5,17 +5,17 @@
 Release Notes
 =============
 
-v112.2.0 (Pike)
+v12.2.0 (Pike)
 --------------
 
 Added Functionality
 ```````````````````
-* Added bulk creation and deletion.
+* Added bulk_create and bulk_delete pool member.
 
 
 Bug Fixes
 `````````
-* None noted.
+* Fix Unknown state set in error
 
 
 Limitations
